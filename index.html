@@ -420,7 +420,10 @@ let gateSplitProgress = 0; // 0 = closed, 1 = parted
     setTimeout(() => { playBach(); }, 1200);
   }
 
-  gateBtn.addEventListener('click', openGate);
+  gateBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    openGate();
+  });
 
   document.addEventListener('keydown', function(e) {
     if (!gateOpen && (e.key === 'Enter' || e.key === ' ')) {
@@ -1278,6 +1281,7 @@ addEventListener('mousemove', e => {
 
 addEventListener('click', e => {
   if (!gateOpen) return;
+  if (gateSplitProgress < 0.5) return;
   if (!audioInitialized) initAudio();
 
   for (const cp of childPositions) {
