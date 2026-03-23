@@ -75,14 +75,14 @@ canvas { display: block; }
 <div id="gate">
   <canvas id="gate-bg"></canvas>
   <div id="gate-ui">
-    <div id="gate-prompt">enter fuge</div>
-    <input id="gate-input" type="text" maxlength="6" placeholder="···" autofocus autocomplete="off" spellcheck="false">
-    <div id="gate-hint">quack.</div>
+    <div id="gate-prompt">decomposition of THE composition</div>
+    <button id="gate-btn" style="background:transparent;border:1px solid rgba(240,192,64,0.3);color:rgba(240,192,64,0.7);font-family:monospace;font-size:22px;letter-spacing:6px;padding:14px 48px;cursor:pointer;text-transform:uppercase;transition:all 0.3s;outline:none;" onmouseover="this.style.borderColor='rgba(240,192,64,0.6)';this.style.color='rgba(240,192,64,0.9)'" onmouseout="this.style.borderColor='rgba(240,192,64,0.3)';this.style.color='rgba(240,192,64,0.7)'">DECODE</button>
+    <div id="gate-hint" style="margin-top:28px;color:rgba(240,192,64,0.08);font-size:13px;font-family:monospace;">BWV 847 · J.S. Bach</div>
   </div>
 </div>
 
 <div id="breadcrumb"></div>
-<div id="title">composition → decomposition<br>by compressor → decompressor<br><span style="opacity:0.5">BWV 847 · J.S. Bach</span></div>
+<div id="title">decomposition of THE composition<br>by the decoder of the encoder<br><span style="opacity:0.5">BWV 847 · J.S. Bach</span></div>
 <div id="hud"></div>
 <div id="footnote">all is graph · this is the best possible graph computer<br>proof: left as exercise ;) quack.</div>
 <canvas id="c"></canvas>
@@ -105,7 +105,6 @@ let gateSplitProgress = 0; // 0 = closed, 1 = parted
 (function initGate() {
   const gateEl = document.getElementById('gate');
   const gateUI = document.getElementById('gate-ui');
-  const gateInput = document.getElementById('gate-input');
   const gateHint = document.getElementById('gate-hint');
   const gbg = document.getElementById('gate-bg');
   const gc = gbg.getContext('2d');
@@ -401,60 +400,32 @@ let gateSplitProgress = 0; // 0 = closed, 1 = parted
   addEventListener('resize', resizeGate);
   drawGate();
 
-  // ── Gate input logic ──
-  let wrongCount = 0;
-  const quacks = ['quack.', 'quack?', 'quack quack.', 'not quite, quack.', '...quack.', 'nope. quack.'];
+  // ── Gate DECODE button logic ──
+  const gateBtn = document.getElementById('gate-btn');
 
-  gateInput.addEventListener('input', function() {
-    const val = this.value.trim().toLowerCase().replace(/\s+/g, '');
-    if (val === '847' || val === 'bwv847') {
-      gateOpen = true;
-      gateUI.classList.add('fade');
-      gateInput.blur();
-      gateInput.disabled = true; // prevent it from stealing future keypresses
-      // Initialize audio NOW while we have a user gesture (Chrome requires it)
-      if (!audioInitialized) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        audioCtx.resume();
-        audioMaster = audioCtx.createGain();
-        audioMaster.gain.value = 0.35;
-        audioMaster.connect(audioCtx.destination);
-        audioInitialized = true;
-      }
-      // Autoplay: the fugue begins as the curtain parts
-      setTimeout(() => { playBach(); }, 1200);
+  function openGate() {
+    gateOpen = true;
+    gateUI.classList.add('fade');
+    gateBtn.disabled = true;
+    // Initialize audio NOW while we have a user gesture (Chrome requires it)
+    if (!audioInitialized) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      audioCtx.resume();
+      audioMaster = audioCtx.createGain();
+      audioMaster.gain.value = 0.35;
+      audioMaster.connect(audioCtx.destination);
+      audioInitialized = true;
     }
-  });
+    // Autoplay: the fugue begins as the curtain parts
+    setTimeout(() => { playBach(); }, 1200);
+  }
 
-  gateInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      const val = this.value.trim().toLowerCase().replace(/\s+/g, '');
-      if (val && val !== '847' && val !== 'bwv847') {
-        this.classList.add('shake');
-        setTimeout(() => this.classList.remove('shake'), 400);
-        gateHint.textContent = quacks[wrongCount % quacks.length];
-        gateHint.classList.add('wrong');
-        setTimeout(() => gateHint.classList.remove('wrong'), 1500);
-        wrongCount++;
-        this.value = '';
-        if (wrongCount === 5) {
-          gateHint.textContent = 'the catalogue knows.';
-          gateHint.style.color = 'rgba(240,192,64,0.15)';
-        }
-        if (wrongCount === 8) {
-          gateHint.textContent = 'B · W · V';
-          gateHint.style.color = 'rgba(240,192,64,0.2)';
-        }
-      }
-    }
-  });
+  gateBtn.addEventListener('click', openGate);
 
   document.addEventListener('keydown', function(e) {
-    if (!gateOpen && e.key !== 'Tab') {
-      if (e.target !== gateInput) {
-        e.preventDefault();
-        gateInput.focus();
-      }
+    if (!gateOpen && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openGate();
     }
   }, true);
 })();
