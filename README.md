@@ -1,4 +1,4 @@
-# decoder-of-the-encoder
+# Decoder of the encoder
 
 **Decomposition of THE composition by the decoder of the encoder.**
 
