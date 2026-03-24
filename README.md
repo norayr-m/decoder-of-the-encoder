@@ -18,7 +18,7 @@ Each voice becomes a branch. Each note becomes a leaf. The temporal structure of
 - **Temporal glow**: nodes illuminate when their notes fire in the audio timeline
 - **Penrose chainmail curtain**: impossible triangles that part like theater fabric on entry
 - **Fiber-optic light strands**: bright bursts trace voice entries through the tree
-- **Rank-based rendering**: queen's warmth at every level, scaffolding mutates into Escher at depth
+- **Rank-based rendering**: warmth at every level, scaffolding mutates into Escher at depth
 - **Self-contained**: single HTML file, no dependencies, no build step
 
 ## The math
@@ -46,8 +46,10 @@ LICENSE
 ## References
 
 - Bach, J.S. — *The Well-Tempered Clavier*, Book I, BWV 847 (1722)
-- Matevosyan, N., Apidae, C., Petrosyan, A. — *Distributed Reconstruction from Incomplete Boundary Projections with Non-Trivial Internal Completion* (2026, draft)
-- Escher, M.C. — for the impossible triangles that guard the gate
+- Matevosyan, N., Anoian, C., Petrosyan, A. — *Distributed Reconstruction from Incomplete Boundary Projections with Non-Trivial Internal Completion* (2026, draft)
+- Escher, M.C. — for the impossible triangles
+
+All visualizations and demonstrations were co-authored with Claude (Anthropic).
 
 ## Author
 

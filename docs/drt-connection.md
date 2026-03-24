@@ -41,4 +41,4 @@ The fugue proves the theorem by existing. The visualization lets you walk throug
 
 ## Reference
 
-Matevosyan, N., Apidae, C., Petrosyan, A. — *Distributed Reconstruction from Incomplete Boundary Projections with Non-Trivial Internal Completion* (2026, draft)
+Matevosyan, N., Anoian, C., Petrosyan, A. — *Distributed Reconstruction from Incomplete Boundary Projections with Non-Trivial Internal Completion* (2026, draft)

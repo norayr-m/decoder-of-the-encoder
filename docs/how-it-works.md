@@ -14,7 +14,7 @@ Bach's BWV 847 Fugue No.2 in C minor has 4 voices: soprano, alto, tenor, bass. T
 Click any node to descend into its subtree. The view recenters on the selected node's children. Breadcrumb trail at top-left tracks your position in the tree. Click breadcrumbs to navigate back up.
 
 At every level, the rendering adapts:
-- **Rank 0** (home): full view, queen visible, all voices as orbital branches
+- **Rank 0** (home): full view, center node visible, all voices as orbital branches
 - **Rank 1** (voice): single voice expanded, siblings dimmed
 - **Rank 2+** (phrases/notes): increasing detail, scaffolding geometry mutates toward Escher
 
