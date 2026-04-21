@@ -1,5 +1,7 @@
 # Decoder of the encoder
 
+> This is an amateur engineering project. We are not HPC professionals and make no competitive claims.
+
 **Decomposition of THE composition by the decoder of the encoder.**
 
 BWV 847 — Bach's Fugue No.2 in C minor from The Well-Tempered Clavier, Book I (1722) — mapped to a navigable graph tree.
