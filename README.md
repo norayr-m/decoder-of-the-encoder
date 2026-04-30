@@ -1,57 +1,61 @@
-# Decoder of the encoder
+# Decoder of the Encoder
 
-> This is an amateur engineering project. We are not HPC professionals and make no competitive claims.
+> This is an amateur engineering project. We are not HPC professionals and make no competitive claims. Errors likely.
 
-**Decomposition of THE composition by the decoder of the encoder.**
+Bach's BWV 847 — the C-minor fugue from *The Well-Tempered Clavier*, Book I (1722) — laid out as a navigable graph tree. Each voice is a branch, each note is a leaf. You scroll, click, and the structure of the fugue becomes a place you can walk through.
 
-BWV 847 — Bach's Fugue No.2 in C minor from The Well-Tempered Clavier, Book I (1722) — mapped to a navigable graph tree.
-
-The fugue is the natural encoding: **composition → decomposition → decompression**. The same function at every scale.
+**Open `rank-sphere.html` in a browser. Type `847`.**
 
 ## What it does
 
-Each voice becomes a branch. Each note becomes a leaf. The temporal structure of the fugue — subject entries, inversions, stretto — becomes a traversable topology. You navigate Bach as a tree.
+A fugue is, by construction, the same musical idea repeated across several voices, each transformed (transposed, inverted, augmented, delayed). This visualization treats those voices as branches of a tree:
 
-**Open `rank-sphere.html` in a browser. Enter `847`.**
+- click a node to descend into a voice's subtree;
+- breadcrumb navigation walks back up;
+- as the audio plays, the corresponding nodes light up;
+- a Penrose-chainmail "curtain" parts on entry; fiber-optic light strands trace voice entries through the tree;
+- everything renders in a single self-contained HTML file — no build step, no dependencies.
 
-## Features
+The point is not the visual effect. The point is that you can navigate the structure of a 1722 piece of music as if it were a graph, and the navigation is faithful to what's actually in the score.
 
-- **Graph-navigable tree**: click nodes to descend into voice subtrees, breadcrumb navigation back up
-- **Temporal glow**: nodes illuminate when their notes fire in the audio timeline
-- **Penrose chainmail curtain**: impossible triangles that part like theater fabric on entry
-- **Fiber-optic light strands**: bright bursts trace voice entries through the tree
-- **Rank-based rendering**: warmth at every level, scaffolding mutates into Escher at depth
-- **Self-contained**: single HTML file, no dependencies, no build step
+## Why it matters (DRT angle)
 
-## The math
+This is the **most concrete instantiation** of the Distributed Reconstruction framework. The fugue subject is the original signal $f$. Each voice is one partial observer with its own projection (transposition, inversion, augmentation). The whole fugue is the aggregate. What makes the fugue interesting is exactly the question the paper asks: the aggregate is not just a superposition of the parts — the contrapuntal relations across voices carry structure that no single voice carries alone.
 
-This visualization is a concrete instantiation of the [Distributed Reconstruction Theorem](docs/drt-connection.md) — the framework for understanding how incomplete observers collectively reconstruct representations that exceed the original.
-
-The fugue subject IS the function f. Each voice IS an observer with its own projection Π_i (transposition, inversion, augmentation). Bach IS the aggregate reconstruction operator R(f). The result exceeds the subject because each voice adds structure (Type 2: deduction) through contrapuntal priors that no single voice carries alone.
+The honest, current claim from the v0.1 draft is *not* that "the fugue has more norm than the subject" — that earlier formula has been retracted. The current claim is conditional: under a bounded computational budget, the aggregate exposes structure that the subject alone within the same budget does not. The fugue is a 300-year-old example of that pattern in audible form.
 
 ```
-R(f) = Σ φ_i · C_i(Π_i f)    where ‖R(f)‖ > ‖f‖
+R(f) = Σ φᵢ · Cᵢ(Πᵢ f)
 ```
 
-The fugue proves the theorem by existing.
+is the form of the aggregate. The framework around it — what counts as the budget, what "exposes structure" means precisely — is the work of the v0.1 paper.
+
+## How to run
+
+Single HTML file. Open in any modern browser. Audio is opt-in.
+
+```
+git clone https://github.com/norayr-m/decoder-of-the-encoder.git
+open decoder-of-the-encoder/rank-sphere.html
+```
+
+Then type `847`.
 
 ## Structure
 
-```
-rank-sphere.html              — the visualization (open in browser, enter 847)
-docs/
-  how-it-works.md             — graph mapping: fugue voices → tree branches
-  drt-connection.md           — link to the Distributed Reconstruction Theorem
-LICENSE
-```
+- `rank-sphere.html` — the visualization
+- `docs/how-it-works.md` — fugue voices → tree branches mapping
+- `docs/drt-connection.md` — link to the underlying paper
+- `index.html` — landing
+- `LICENSE`
 
 ## References
 
-- Bach, J.S. — *The Well-Tempered Clavier*, Book I, BWV 847 (1722)
-- Matevosyan, N., Anoian, C., Petrosyan, A. — *Distributed Reconstruction from Incomplete Boundary Projections with Non-Trivial Internal Completion* (2026, draft)
-- Escher, M.C. — for the impossible triangles
+- Bach, J. S. — *The Well-Tempered Clavier*, Book I, BWV 847 (1722).
+- Distributed Reconstruction work — v0.1 in preparation, N. Matevosyan and A. Petrosyan.
+- Escher, M. C. — for the impossible-triangle aesthetic.
 
-All visualizations and demonstrations were co-authored with Claude (Anthropic).
+Visualizations co-authored with Claude (Anthropic).
 
 ## Author
 
@@ -59,4 +63,4 @@ Norayr Matevosyan
 
 ## License
 
-MIT
+GPLv3
