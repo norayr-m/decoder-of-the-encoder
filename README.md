@@ -63,4 +63,4 @@ Norayr Matevosyan
 
 ## License
 
-GPLv3
+Apache 2.0
