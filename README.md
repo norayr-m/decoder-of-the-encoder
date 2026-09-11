@@ -52,7 +52,7 @@ Then type `847`.
 ## References
 
 - Bach, J. S. — *The Well-Tempered Clavier*, Book I, BWV 847 (1722).
-- Distributed Reconstruction work — v0.1 in preparation, N. Matevosyan and A. Petrosyan.
+- Distributed Reconstruction work — N. Matevosyan, work in progress.
 - Escher, M. C. — for the impossible-triangle aesthetic.
 
 Visualizations co-authored with Claude (Anthropic).
