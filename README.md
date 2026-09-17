@@ -1,6 +1,6 @@
 # Decoder of the Encoder
 
-> This is an amateur engineering project. We are not HPC professionals and make no competitive claims. Errors likely.
+> This is an amateur engineering project. The numbers here come from a single machine and a single family of runs, with no controlled benchmark: reproduce them with the script in this repository rather than taking them on trust. Errors likely.
 
 Bach's BWV 847 — the C-minor fugue from *The Well-Tempered Clavier*, Book I (1722) — laid out as a navigable graph tree. Each voice is a branch, each note is a leaf. You scroll, click, and the structure of the fugue becomes a place you can walk through.
 
